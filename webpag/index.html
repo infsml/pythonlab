@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Infinitely Small</title>
+</head>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.0.3/shaka-player.compiled.min.js"></script>
+<style type="text/css">
+	body {
+		margin: 0px;
+	}
+	#maindiv a{
+		text-align: center;
+		color: #e0e0e0;
+		background-color: #ee0000
+	}
+	#maindiv {
+		height: fit-content;
+		background: #404040;
+	}
+</style>
+<body>
+	<div id="maindiv">
+		<a class="menubtn" onclick="showdiva('homediv')">Home</a>
+		<a class="menubtn" onclick="showdiva('downdiv')">Download</a>
+		<a class="menubtn" onclick="showdiva('aboudiv')">About</a>
+	</div>
+	<div id="dispdiv">
+	</div>
+	<div id="homediv" style="visibility: hidden;">
+		<video width="640" height="480" controls></video>
+	</div>
+	<div id="downdiv" style="visibility: hidden;">
+		This is download
+	</div>
+	<div id="aboudiv" style="visibility: hidden;">
+		This is about
+	</div>
+</body>
+<script type="text/javascript">
+	var f = document.getElementById('maindiv')
+	showdiva('homediv');
+	function showdiva(divaname){
+		k = document.getElementById(divaname);
+		disp = document.getElementById('dispdiv');
+		kc = k.cloneNode(true);
+		kc.id = 'curdiva';
+		kc.style.visibility = 'visible';
+		disp.replaceChildren(kc)
+	}
+</script>
+</html>

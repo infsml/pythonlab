@@ -1,0 +1,9 @@
+usr1=[int(i) for i in input("Enter list: ").split()]
+sm=0
+for i in usr1:sm+=i
+m = 1
+for i in usr1:m*=i
+mx = usr1[0]
+for i in usr1:if mx<i:mx=i
+mn = usr1[0]
+for i in usr1:if mn>i:mn=i
