@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Text File</title>
+</head>
+<body>
+    <input type="file" name="inputfile"
+            id="inputfile">
+    <br>
+    <pre id="output"></pre>
+    <script type="text/javascript">
+        document.getElementById('inputfile')
+            .addEventListener('change', function() {
+                console.log('file choosen')
+            var fr=new FileReader();
+            fr.onload=function(){
+                var http = new XMLHttpRequest();
+                var url = 'https://httpbin.org/post';
+                http.open('POST',url,true);
+                http.setRequestHeader('Content-type','application/octet-stream')
+                http.onreadystatechange=function() {
+                    if(http.readyState == 4 && http.status == 200){
+                        document.getElementById('output').innerHTML = btoa(http.response);
+                    }
+                }
+                http.send(fr.result);
+            }
+            fr.readAsBinaryString(this.files[0]);
+        })
+    </script>
+</body>
+</html>
